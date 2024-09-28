@@ -1,0 +1,11 @@
+{
+    "name": "ClassManagement",
+    "alias": "classmanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ClassManagement\\Providers\\ClassManagementServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/enrollmentmanagement",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\EnrollmentManagement\\": "app/",
+            "Modules\\EnrollmentManagement\\Database\\Factories\\": "database/factories/",
+            "Modules\\EnrollmentManagement\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\EnrollmentManagement\\Tests\\": "tests/"
+        }
+    }
+}

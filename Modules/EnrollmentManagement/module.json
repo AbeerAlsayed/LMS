@@ -1,0 +1,11 @@
+{
+    "name": "EnrollmentManagement",
+    "alias": "enrollmentmanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\EnrollmentManagement\\Providers\\EnrollmentManagementServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,11 @@
+{
+    "name": "AssignmentManagement",
+    "alias": "assignmentmanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AssignmentManagement\\Providers\\AssignmentManagementServiceProvider"
+    ],
+    "files": []
+}

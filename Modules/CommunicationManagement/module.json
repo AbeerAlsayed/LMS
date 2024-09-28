@@ -1,0 +1,11 @@
+{
+    "name": "CommunicationManagement",
+    "alias": "communicationmanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CommunicationManagement\\Providers\\CommunicationManagementServiceProvider"
+    ],
+    "files": []
+}

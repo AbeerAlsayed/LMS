@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/learningresourcemanagement",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\LearningResourceManagement\\": "app/",
+            "Modules\\LearningResourceManagement\\Database\\Factories\\": "database/factories/",
+            "Modules\\LearningResourceManagement\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\LearningResourceManagement\\Tests\\": "tests/"
+        }
+    }
+}

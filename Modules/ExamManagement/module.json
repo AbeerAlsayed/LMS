@@ -1,0 +1,11 @@
+{
+    "name": "ExamManagement",
+    "alias": "exammanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ExamManagement\\Providers\\ExamManagementServiceProvider"
+    ],
+    "files": []
+}

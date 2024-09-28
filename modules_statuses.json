@@ -1,0 +1,17 @@
+{
+    "UserManagement": true,
+    "TeacherManagement": true,
+    "StudentManagement": true,
+    "ParentManagement": true,
+    "GradeManagement": true,
+    "ExamManagement": true,
+    "CommunicationManagement": true,
+    "CourseManagement": true,
+    "ClassManagement": true,
+    "SubjectManagement": true,
+    "EnrollmentManagement": true,
+    "AttendanceManagement": true,
+    "AssignmentManagement": true,
+    "LearningResourceManagement": true,
+    "NotificationManagement": true
+}

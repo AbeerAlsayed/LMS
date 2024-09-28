@@ -1,0 +1,11 @@
+{
+    "name": "LearningResourceManagement",
+    "alias": "learningresourcemanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\LearningResourceManagement\\Providers\\LearningResourceManagementServiceProvider"
+    ],
+    "files": []
+}

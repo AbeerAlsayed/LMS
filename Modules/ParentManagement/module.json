@@ -1,0 +1,11 @@
+{
+    "name": "ParentManagement",
+    "alias": "parentmanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ParentManagement\\Providers\\ParentManagementServiceProvider"
+    ],
+    "files": []
+}

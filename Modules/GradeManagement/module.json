@@ -1,0 +1,11 @@
+{
+    "name": "GradeManagement",
+    "alias": "grademanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\GradeManagement\\Providers\\GradeManagementServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,11 @@
+{
+    "name": "TeacherManagement",
+    "alias": "teachermanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\TeacherManagement\\Providers\\TeacherManagementServiceProvider"
+    ],
+    "files": []
+}
