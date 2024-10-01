@@ -4,6 +4,7 @@ namespace Modules\AttendanceManagement\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\AttendanceManagement\Http\Requests\AttendanceRequest;
 use Modules\AttendanceManagement\Models\Attendance;
 
 class AttendanceController extends Controller
@@ -16,16 +17,9 @@ class AttendanceController extends Controller
     }
 
     // Store a new attendance record
-    public function store(Request $request)
+    public function store(AttendanceRequest $request)
     {
-        $validated = $request->validate([
-            'student_id' => 'required|exists:students,id',
-            'class_id' => 'required|exists:classes,id',
-            'attendance_date' => 'required|date',
-            'is_present' => 'required|boolean',
-        ]);
-
-        $attendance = Attendance::create($validated);
+        $attendance = Attendance::create($request->validated());
         return response()->json($attendance, 201);
     }
 
@@ -37,18 +31,10 @@ class AttendanceController extends Controller
     }
 
     // Update an attendance record
-    public function update(Request $request, $id)
+    public function update(AttendanceRequest $request, $id)
     {
         $attendance = Attendance::findOrFail($id);
-
-        $validated = $request->validate([
-            'student_id' => 'sometimes|required|exists:students,id',
-            'class_id' => 'sometimes|required|exists:classes,id',
-            'attendance_date' => 'sometimes|required|date',
-            'is_present' => 'sometimes|required|boolean',
-        ]);
-
-        $attendance->update($validated);
+        $attendance->update($request->validated());
         return response()->json($attendance);
     }
 

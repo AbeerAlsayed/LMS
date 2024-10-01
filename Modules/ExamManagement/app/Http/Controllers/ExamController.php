@@ -4,6 +4,7 @@ namespace Modules\ExamManagement\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\ExamManagement\Http\Requests\ExamRequest;
 use Modules\ExamManagement\Models\Exam;
 
 class ExamController extends Controller
@@ -16,16 +17,9 @@ class ExamController extends Controller
     }
 
     // Store a new exam
-    public function store(Request $request)
+    public function store(ExamRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'course_id' => 'required|exists:courses,id',
-            'exam_date' => 'required|date',
-            'max_score' => 'required|integer|min:0',
-        ]);
-
-        $exam = Exam::create($validated);
+        $exam = Exam::create($request->validated());
         return response()->json($exam, 201);
     }
 
@@ -37,18 +31,10 @@ class ExamController extends Controller
     }
 
     // Update an exam
-    public function update(Request $request, $id)
+    public function update(ExamRequest $request, $id)
     {
         $exam = Exam::findOrFail($id);
-
-        $validated = $request->validate([
-            'title' => 'sometimes|required|string|max:255',
-            'course_id' => 'sometimes|required|exists:courses,id',
-            'exam_date' => 'sometimes|required|date',
-            'max_score' => 'sometimes|required|integer|min:0',
-        ]);
-
-        $exam->update($validated);
+        $exam->update($request->validated());
         return response()->json($exam);
     }
 

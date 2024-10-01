@@ -4,62 +4,39 @@ namespace Modules\ParentManagement\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\ParentManagement\Http\Requests\ParentRequest;
 
 class ParentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('parentmanagement::index');
+        $parents = Parent::all();
+        return response()->json($parents);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(ParentRequest $request)
     {
-        return view('parentmanagement::create');
+        $parent = Parent::create($request->validated());
+        return response()->json($parent, 201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     */
     public function show($id)
     {
-        return view('parentmanagement::show');
+        $parent = Parent::findOrFail($id);
+        return response()->json($parent);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function update(ParentRequest $request, $id)
     {
-        return view('parentmanagement::edit');
+        $parent = Parent::findOrFail($id);
+        $parent->update($request->validated());
+        return response()->json($parent);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
-        //
+        $parent = Parent::findOrFail($id);
+        $parent->delete();
+        return response()->json(null, 204);
     }
 }

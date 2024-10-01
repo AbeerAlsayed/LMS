@@ -4,6 +4,8 @@ namespace Modules\LearningResourceManagement\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\LearningResourceManagement\Http\Requests\LearningResourceRequest;
+use Modules\LearningResourceManagement\Models\LearningResource;
 
 class LearningResourceController extends Controller
 {
@@ -15,17 +17,9 @@ class LearningResourceController extends Controller
     }
 
     // Store a new learning resource
-    public function store(Request $request)
+    public function store(LearningResourceRequest  $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'course_id' => 'required|exists:courses,id',
-            'type' => 'required|string|max:50',  // e.g., video, pdf, link
-            'resource_url' => 'required|string|max:255', // URL or file path to the resource
-            'description' => 'nullable|string',
-        ]);
-
-        $learningResource = LearningResource::create($validated);
+        $learningResource = LearningResource::create($request->validated());
         return response()->json($learningResource, 201);
     }
 
@@ -37,19 +31,10 @@ class LearningResourceController extends Controller
     }
 
     // Update a learning resource
-    public function update(Request $request, $id)
+    public function update(LearningResourceRequest  $request, $id)
     {
         $learningResource = LearningResource::findOrFail($id);
-
-        $validated = $request->validate([
-            'title' => 'sometimes|required|string|max:255',
-            'course_id' => 'sometimes|required|exists:courses,id',
-            'type' => 'sometimes|required|string|max:50',
-            'resource_url' => 'sometimes|required|string|max:255',
-            'description' => 'nullable|string',
-        ]);
-
-        $learningResource->update($validated);
+        $learningResource->update($request->validated());
         return response()->json($learningResource);
     }
 

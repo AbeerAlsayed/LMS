@@ -4,6 +4,7 @@ namespace Modules\NotificationManagement\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\NotificationManagement\Http\Requests\NotificationRequest;
 use Modules\NotificationManagement\Models\Notification;
 
 class NotificationController extends Controller
@@ -16,16 +17,9 @@ class NotificationController extends Controller
     }
 
     // Store a new notification
-    public function store(Request $request)
+    public function store(NotificationRequest $request)
     {
-        $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'title' => 'required|string|max:255',
-            'message' => 'required|string',
-            'is_read' => 'boolean',
-        ]);
-
-        $notification = Notification::create($validated);
+        $notification = Notification::create($request->validated());
         return response()->json($notification, 201);
     }
 
@@ -37,15 +31,10 @@ class NotificationController extends Controller
     }
 
     // Mark a notification as read or unread
-    public function update(Request $request, $id)
+    public function update(NotificationRequest $request, $id)
     {
         $notification = Notification::findOrFail($id);
-
-        $validated = $request->validate([
-            'is_read' => 'required|boolean',
-        ]);
-
-        $notification->update($validated);
+        $notification->update($request->validated());
         return response()->json($notification);
     }
 

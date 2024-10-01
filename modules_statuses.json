@@ -5,7 +5,7 @@
     "ParentManagement": true,
     "GradeManagement": true,
     "ExamManagement": true,
-    "CommunicationManagement": true,
+    "CommunicationManagement": false,
     "CourseManagement": true,
     "ClassManagement": true,
     "SubjectManagement": true,

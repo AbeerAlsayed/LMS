@@ -4,62 +4,40 @@ namespace Modules\GradeManagement\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\GradeManagement\Http\Requests\GradeRequest;
+use Modules\GradeManagement\Models\Grade;
 
 class GradeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('grademanagement::index');
+        $grades = Grade::all();
+        return response()->json($grades);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(GradeRequest $request)
     {
-        return view('grademanagement::create');
+        $grade = Grade::create($request->validated());
+        return response()->json($grade, 201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     */
     public function show($id)
     {
-        return view('grademanagement::show');
+        $grade = Grade::findOrFail($id);
+        return response()->json($grade);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function update(GradeRequest $request, $id)
     {
-        return view('grademanagement::edit');
+        $grade = Grade::findOrFail($id);
+        $grade->update($request->validated());
+        return response()->json($grade);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
-        //
+        $grade = Grade::findOrFail($id);
+        $grade->delete();
+        return response()->json(null, 204);
     }
 }
